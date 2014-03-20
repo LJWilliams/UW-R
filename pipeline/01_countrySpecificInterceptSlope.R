@@ -1,8 +1,8 @@
-library(plyr) # ddply()
-gDat <- read.delim("data//gapminderDataFiveYear.txt")
+library(plyr) # ddply(), arrange()
+gDat <- read.delim("../data//gapminderDataFiveYear.txt")
 str(gDat)
 
-## function that returns estimated intercept and slope from linear regression of
+## function returns estimated intercept and slope from linear regression of
 ## lifeExp on year
 ## anticipated input: Gapminder data for one country
 yearMin <- min(gDat$year)
@@ -25,10 +25,10 @@ str(gCoef)
 head(gCoef)
 
 ## store in plain text
-write.table(gCoef, "gCoef.txt", quote = FALSE, row.names = FALSE, sep = "\t")
+write.table(gCoef, "../results/gCoef.txt", quote = FALSE, row.names = FALSE, sep = "\t")
 
 ## store in R-specific binary format
 ## will preserve factor level order
-saveRDS(gCoef, "gCoef.rds")
+saveRDS(gCoef, "../results/gCoef.rds")
 
 sessionInfo()
