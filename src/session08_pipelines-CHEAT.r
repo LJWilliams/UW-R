@@ -1,6 +1,6 @@
 library(ggplot2)
 
-gDat <- read.delim("gapminderDataFiveYear.txt")
+gDat <- read.delim("data//gapminderDataFiveYear.txt")
 str(gDat)
 
 tinyDat <- subset(gDat,

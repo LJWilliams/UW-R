@@ -1,6 +1,6 @@
 all: countrySpecificInterceptSlope asiaVsAmericas
 
-countrySpecificInterceptSlope: gapminderDataFiveYear.txt 01_countrySpecificInterceptSlope.R
+countrySpecificInterceptSlope: data/gapminderDataFiveYear.txt 01_countrySpecificInterceptSlope.R
 	Rscript -e "knitr::stitch_rmd('01_countrySpecificInterceptSlope.R')"; rm 01_countrySpecificInterceptSlope.md
 
 asiaVsAmericas: countrySpecificInterceptSlope 02_slopeComparisonAsiaVsAmericas.R
