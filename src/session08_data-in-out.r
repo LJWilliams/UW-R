@@ -1,6 +1,6 @@
 library(ggplot2)
 
-gDat <- read.delim("data//gapminderDataFiveYear.txt")
+gDat <- read.delim("../data/gapminderDataFiveYear.txt")
 str(gDat)
 
 tinyDat <- subset(gDat,
@@ -30,27 +30,27 @@ ggplot(tinyDat, aes(x = year, y = lifeExp)) + geom_line(aes(color = country))
 ## writing to file
 ## write.table() ... read.table()
 levels(tinyDat$country) # "Poland"   "Cambodia" "Rwanda"
-write.table(tinyDat, file = "tinyDat.txt", quote = FALSE,
+write.table(tinyDat, file = "../results/tinyDat.txt", quote = FALSE,
             row.names = FALSE, sep = "\t")
 rm(tinyDat)
-tinyDat
-tinyDat <- read.delim("tinyDat.txt")
-levels(tinyDat$country)
+tinyDat # Error: object 'tinyDat' not found
+tinyDat <- read.delim("../results/tinyDat.txt")
+levels(tinyDat$country) # reverted to "Cambodia" "Poland"   "Rwanda" :(
 
 tinyDat$country <- with(tinyDat, reorder(country, -1 * lifeExp))
 
 ## saveRDS() ... readRDS()
-levels(tinyDat$country)
-saveRDS(tinyDat, "tinyDat.rds")
+levels(tinyDat$country) # "Poland"   "Cambodia" "Rwanda"  
+saveRDS(tinyDat, "../results/tinyDat.rds")
 rm(tinyDat)
 ## go away for 6 months
 ## regain interest in project
-tinyDat <- readRDS("tinyDat.rds")
-levels(tinyDat$country)
+tinyDat <- readRDS("../results/tinyDat.rds")
+levels(tinyDat$country) # STILL "Poland"   "Cambodia" "Rwanda" ... YAY!
 
 ## dput() ... dget()
-levels(tinyDat$country)
-dput(tinyDat, "tinyDat-DPUT.txt")
+levels(tinyDat$country) # "Poland"   "Cambodia" "Rwanda" 
+dput(tinyDat, "../results/tinyDat-DPUT.txt")
 rm(tinyDat)
-tinyDat <- dget("tinyDat-DPUT.txt")
-levels(tinyDat$country)
+tinyDat <- dget("../results/tinyDat-DPUT.txt")
+levels(tinyDat$country) # STILL "Poland"   "Cambodia" "Rwanda" ... YAY!
