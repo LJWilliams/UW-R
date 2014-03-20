@@ -11,7 +11,7 @@ str(hDat)
 ## inspect the slopes by continent
 p <- ggplot(hDat, aes(x = continent, y = slope)) + geom_point()
 print(p)
-ggsave("../figs/asia-vs-americas.pdf", plot = p)
+ggsave("../figs/asia-vs-americas.png", plot = p)
 
 ## test for a difference between Asia and Americas
 t.test(slope ~ continent, hDat)
